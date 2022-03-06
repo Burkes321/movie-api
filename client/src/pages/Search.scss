@@ -1,0 +1,17 @@
+.search {
+  height: 100vh;
+  .search-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+    font-size: 20px;
+    .search-container__card {
+      width: 20%;
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+}
