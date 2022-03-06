@@ -6,7 +6,6 @@ const app = require("../app");
 var router = express.Router();
 const jwt = require("jsonwebtoken");
 const apiKey = process.env.MOVIES_API_KEY;
-console.log(apiKey);
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
@@ -21,12 +20,9 @@ router.post("/testApi", async (req, res) => {
   const year = req.body.year;
 
   const url = `http://www.omdbapi.com/?apikey=${apiKey}&t=${title}&y=${year}&type=${type}`;
-  console.log(url);
   const options = {
     method: "GET",
   };
-
-  console.log(title, type, year);
 
   const response = await fetch(url, options)
     .then((res) => res.json())
