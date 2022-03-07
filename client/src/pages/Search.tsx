@@ -1,7 +1,9 @@
-import React, { useState } from 'react'; 
+import './Search.scss';
+
 import Axios from 'axios';
+import React, { useState } from 'react';
+
 import ApiResponse from './ApiResponse';
-import "./Search.scss";
 
 const Search = () => {
     const [title, setTitle] = useState('');

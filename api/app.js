@@ -6,8 +6,11 @@ var logger = require("morgan");
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
 
+const verifyJwt = require("./middleware/auth");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
+const loginRouter = require("./routes/login");
+const apiRouter = require("./routes/search");
 
 var app = express();
 
@@ -22,13 +25,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+app.use(verifyJwt);
+
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  next(createError(404));
-});
+app.use("/login", loginRouter);
+app.use("/testApi", apiRouter);
 
 // error handler
 app.use(function (err, req, res, next) {
